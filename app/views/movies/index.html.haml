@@ -1,22 +1,24 @@
 %h2 All Movies
 
 %table#movies
-	%thead
-		%tr
-			%th Movie Title
-			%th Rating
-			%th Release Date
-			%th More Info
-			%th Actions
-	%tbody
-		- @movies.each do |movie|
-			%tr
-				%td= movie.title
-				%td= movie.rating
-				%td= movie.release_date
-				%td= link_to "More about #{movie.title}", movie
-				%td
-					=link_to "Edit", edit_movie_path(movie)
-					=link_to "Delete", movie_path(movie), method: :delete, confirm: 'Are you sure?'
+  %thead
+    %tr
+      %th
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+      %th Actions
+  %tbody
+    - @movies.each_with_index do |movie, i|
+      %tr
+        %td= i.next
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.release_date
+        %td= link_to "More about #{movie.title}", movie
+        %td
+          =link_to "Edit", edit_movie_path(movie)
+          =link_to "Delete", movie_path(movie), method: :delete, confirm: 'Are you sure?'
 
 = link_to "Add new movie", new_movie_path

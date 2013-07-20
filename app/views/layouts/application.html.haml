@@ -11,4 +11,7 @@
       #notice.message= flash[:notice]
     - elsif flash[:warning]
       #warning.message= flash[:warning]
+
+    %h1#banner= link_to "Rotten Potatoes", root_path
+
     = yield

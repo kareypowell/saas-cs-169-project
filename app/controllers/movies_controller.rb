@@ -1,11 +1,18 @@
 class MoviesController < ApplicationController
 	
 	def index
-		@movies = Movie.all
+		@movies = Movie.find(:all, order: 'title')
 	end
 
 	def show
-		@movie = Movie.find(params[:id])
+		id = params[:id]
+		@movie = Movie.find_by_id(id)
+		if @movie
+			render 'show'
+		else
+			flash[:warning] = "Sorry, no movie with ID: #{id} could be found."
+			redirect_to root_path
+		end
 	end
 
 	def new
@@ -15,7 +22,7 @@ class MoviesController < ApplicationController
 	def create
 		@movie = Movie.create!(params[:movie])
 		flash[:notice] = "#{@movie.title} was successfully created."
-		redirect_to movies_path
+		redirect_to movie_path(@movie)
 	end
 
 	def edit
