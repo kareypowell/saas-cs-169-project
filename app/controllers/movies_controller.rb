@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
 		if @movie
 			render 'show'
 		else
-			flash[:warning] = "Sorry, no movie with ID: #{id} could be found."
+			flash[:warning] = "Sorry, no movie with id '#{id}' could be found."
 			redirect_to root_path
 		end
 	end
