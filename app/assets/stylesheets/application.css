@@ -79,6 +79,7 @@ form label {
 }
 h1#banner {
   font-size: 36px;
+  text-align: center;
 }
 h1#banner a {
   text-decoration: none;
