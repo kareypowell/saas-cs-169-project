@@ -61,7 +61,7 @@ table#movies th, table#movies td {
 }
 table#movies .odd { background-color: #ffffff; }
 table#movies .even { background-color: #f0f0f0; }
-table#movies tr:hover {
+table#movies tbody tr:hover {
   background-color: yellow;
 }
 #notice, #warning {
