@@ -59,6 +59,8 @@ table#movies th, table#movies td {
   padding: 4px;
   text-align: left;
 }
+table#movies .odd { background-color: #ffffff; }
+table#movies .even { background-color: #f0f0f0; }
 table#movies tr:hover {
   background-color: yellow;
 }

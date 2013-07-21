@@ -3,7 +3,7 @@
 %table#movies
   %thead
     %tr
-      %th
+      %th #
       %th Movie Title
       %th Rating
       %th Release Date
@@ -11,11 +11,11 @@
       %th Actions
   %tbody
     - @movies.each_with_index do |movie, i|
-      %tr
+      %tr{ class: cycle('odd', 'even') }
         %td= i.next
         %td= movie.title
         %td= movie.rating
-        %td= movie.release_date
+        %td= movie.release_date.strftime("%B %d, %Y")
         %td= link_to "More about #{movie.title}", movie
         %td
           =link_to "Edit", edit_movie_path(movie)
