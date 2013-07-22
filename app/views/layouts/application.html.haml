@@ -12,6 +12,8 @@
     - elsif flash[:warning]
       #warning.message= flash[:warning]
 
+    = render partial: 'sessions/login'
+    
     %h1#banner= link_to "Rotten Potatoes", root_path
 
     = yield

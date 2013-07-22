@@ -31,3 +31,6 @@ end
 
 # use Haml for templates
 gem 'haml'
+
+# use Omniauth for SSO
+gem 'omniauth-twitter'
