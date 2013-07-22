@@ -84,3 +84,10 @@ h1#banner {
 h1#banner a {
   text-decoration: none;
 }
+
+div.field_with_errors input, 
+div.field_with_errors textarea {
+  border: 1px solid red;
+  background-color: yellow;
+  font-weight: bold; 
+}

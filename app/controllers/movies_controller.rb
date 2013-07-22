@@ -16,13 +16,17 @@ class MoviesController < ApplicationController
 	end
 
 	def new
-		# default: render 'new' template
+		@movie = Movie.new
 	end
 
 	def create
-		@movie = Movie.create!(params[:movie])
-		flash[:notice] = "#{@movie.title} was successfully created."
-		redirect_to movie_path(@movie)
+		@movie = Movie.new(params[:movie])
+		if @movie.save
+			flash[:notice] = "#{@movie.title} was successfully created."
+			redirect_to movie_path(@movie)
+		else
+			render 'new'
+		end
 	end
 
 	def edit
@@ -31,12 +35,15 @@ class MoviesController < ApplicationController
 
 	def update
 		@movie = Movie.find(params[:id])
-		@movie.update_attributes!(params[:movie])
-		respond_to do |client_wants|
-			client_wants.html { redirect_to movie_path(@movie), notice: 
-													"#{@movie.title} was successfully updated."  }
-			client_wants.xml 	{ render xml: @movie.to_xml }
-		end 
+		if @movie.update_attributes(params[:movie])
+			respond_to do |client_wants|
+				client_wants.html { redirect_to movie_path(@movie), notice: 
+														"#{@movie.title} was successfully updated."  }
+				client_wants.xml 	{ render xml: @movie.to_xml }
+			end
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
